@@ -13,6 +13,7 @@ int main(void)
 {
 
     DigitalOut boardLed(LED1);
+    DigitalIn boardButton(USER_BUTTON);
 
     usRegInputBuf[0] = 1;
     usRegInputBuf[1] = 2;
@@ -33,6 +34,7 @@ int main(void)
         ( void )eMBPoll(  );
 
         boardLed = (usRegInputBuf[0] > 0)? 1 : 0;
+        usRegInputBuf[7] = boardButton;
     }
 }
 
